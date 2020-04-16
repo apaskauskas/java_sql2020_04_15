@@ -1,5 +1,6 @@
 package Pamoka02;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,55 +11,73 @@ public class FirstTask {
         Scanner scanner = new Scanner(System.in);
         FirstTask firstTask = new FirstTask();
 
-        System.out.println("1. Staciojo trikampio plotas\n2. Staciakampio plotas\n3. Kvadrato plotas\n4. Apskritimo plotas\n5. Baigti");
-
-        int selection = scanner.nextInt();
-
-        switch (selection){
-            case 1:
-                firstTask.countTriangle(scanner);
-                break;
-            case 2:
-                firstTask.countStaciakampis(scanner);
-                break;
-            case 3:
-                firstTask.countKvadratas(scanner);
-                break;
-            case 4:
-                firstTask.countApskritimas(scanner);
-                break;
-
-            default:
-                System.out.println("Tokio veiksmo nera!");
+        int selection = 0;
+        while (selection != 5) {
+            System.out.println("1. Staciojo trikampio plotas\n2. Staciakampio plotas\n3. Kvadrato plotas\n4. Apskritimo plotas\n5. Baigti");
+            selection = firstTask.getCorrectNumber(scanner);
+            switch (selection) {
+                case 1:
+                    firstTask.countTriangle(scanner);
+                    break;
+                case 2:
+                    firstTask.countStaciakampis(scanner);
+                    break;
+                case 3:
+                    firstTask.countKvadratas(scanner);
+                    break;
+                case 4:
+                    firstTask.countApskritimas(scanner);
+                    break;
+                case 5:
+                    System.out.println("Viso gero!");
+                    break;
+                default:
+                    System.out.println("Tokio veiksmo nera!");
+            }
         }
-
     }
+
     private void countTriangle(Scanner scanner) {
         System.out.println("Iveskite pirma statini: ");
-        int a = scanner.nextInt();
+        int a = getCorrectNumber(scanner);
         System.out.println("Iveskite antra statini: ");
-        int b = scanner.nextInt();
+        int b = getCorrectNumber(scanner);
 
         System.out.println("Trikampio plotas: " + a * b / 2);
     }
+
     private void countStaciakampis(Scanner scanner) {
         System.out.println("Iveskite pirma statini: ");
-        int a = scanner.nextInt();
+        int a = getCorrectNumber(scanner);
         System.out.println("Iveskite antra statini: ");
-        int b = scanner.nextInt();
+        int b = getCorrectNumber(scanner);
 
         System.out.println("Staciakampio plotas: " + a * b);
     }
+
     private void countKvadratas(Scanner scanner) {
         System.out.println("Iveskite statini: ");
-        int a = scanner.nextInt();
+        int a = getCorrectNumber(scanner);
 
         System.out.println("Kvadrato plotas: " + a * 2);
     }
+
     private void countApskritimas(Scanner scanner) {
         System.out.println("Iveskite apskritimo ilgi: ");
-        int a = scanner.nextInt();
+        int a = getCorrectNumber(scanner);
         double pi = 3.145;
-        System.out.println("Apskritimo plotas: " + pi*(a*a));
+        System.out.println("Apskritimo plotas: " + pi * (a * a));
+    }
+
+    private int getCorrectNumber(Scanner scanner) {
+        while (true) {
+            try {
+                int number = scanner.nextInt();
+                return number;
+            } catch (InputMismatchException e) {
+                System.out.println("Ivedete bloga charakteri, pakartokite");
+                scanner.nextLine();
+            }
+        }
     }
 }
