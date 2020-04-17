@@ -14,7 +14,7 @@ public class FirstTask {
         int selection = 0;
         while (selection != 5) {
             System.out.println("1. Staciojo trikampio plotas\n2. Staciakampio plotas\n3. Kvadrato plotas\n4. Apskritimo plotas\n5. Baigti");
-            selection = firstTask.getCorrectNumber(scanner);
+            selection = (int) NumberUtils.getCorrectNumber(scanner);
             switch (selection) {
                 case 1:
                     firstTask.countTriangle(scanner);
@@ -39,45 +39,35 @@ public class FirstTask {
 
     private void countTriangle(Scanner scanner) {
         System.out.println("Iveskite pirma statini: ");
-        int a = getCorrectNumber(scanner);
+        double a = NumberUtils.getCorrectNumber(scanner);
         System.out.println("Iveskite antra statini: ");
-        int b = getCorrectNumber(scanner);
+        double b = NumberUtils.getCorrectNumber(scanner);
 
         System.out.println("Trikampio plotas: " + a * b / 2);
     }
 
     private void countStaciakampis(Scanner scanner) {
         System.out.println("Iveskite pirma statini: ");
-        int a = getCorrectNumber(scanner);
+        double a = NumberUtils.getCorrectNumber(scanner);
         System.out.println("Iveskite antra statini: ");
-        int b = getCorrectNumber(scanner);
+        double b = NumberUtils.getCorrectNumber(scanner);
 
         System.out.println("Staciakampio plotas: " + a * b);
     }
 
     private void countKvadratas(Scanner scanner) {
         System.out.println("Iveskite statini: ");
-        int a = getCorrectNumber(scanner);
+        double a = NumberUtils.getCorrectNumber(scanner);
 
         System.out.println("Kvadrato plotas: " + a * 2);
     }
 
     private void countApskritimas(Scanner scanner) {
         System.out.println("Iveskite apskritimo ilgi: ");
-        int a = getCorrectNumber(scanner);
+        double a = NumberUtils.getCorrectNumber(scanner);
         double pi = 3.145;
         System.out.println("Apskritimo plotas: " + pi * (a * a));
     }
 
-    private int getCorrectNumber(Scanner scanner) {
-        while (true) {
-            try {
-                int number = scanner.nextInt();
-                return number;
-            } catch (InputMismatchException e) {
-                System.out.println("Ivedete bloga charakteri, pakartokite");
-                scanner.nextLine();
-            }
-        }
-    }
+
 }
