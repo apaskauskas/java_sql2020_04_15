@@ -14,7 +14,7 @@ public class FirstTask {
         FirstTask firsttask = new FirstTask();
         firsttask.readRequiredUserData();
         DecimalFormat decimalFormat = new DecimalFormat("00.00");
-        System.out.println("Jusu KMI " + decimalFormat.format(firsttask.counKmi()));
+        System.out.println("Jusu KMI " + decimalFormat.format(firsttask.countKmi()));
 
     }
 
@@ -26,7 +26,7 @@ public class FirstTask {
         svoris = NumberUtils.getCorrectNumber(scanner);
     }
 
-    private double counKmi() {
+    private double countKmi() {
 
         return svoris / Math.pow(ugis, 2);
     }

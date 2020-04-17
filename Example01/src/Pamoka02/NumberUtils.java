@@ -15,5 +15,12 @@ public class NumberUtils {
             }
         }
     }
-
+    public static double getCorrectNumber(Scanner scanner, String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            System.out.println("Ivedete negera reiksme, iveskite is naujo");
+            return getCorrectNumber(scanner);
+        }
+    }
 }
