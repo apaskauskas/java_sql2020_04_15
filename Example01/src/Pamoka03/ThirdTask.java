@@ -1,5 +1,7 @@
 package Pamoka03;
 
+import Pamoka02.NumberUtils;
+
 import java.util.Scanner;
 
 /**
@@ -22,8 +24,8 @@ public class ThirdTask {
         String line = scanner.nextLine();
 
         String[] items = line.split(" ");
-        int firstNumber = Integer.parseInt(items[0]);
-        int secondNumber = Integer.parseInt(items[2]);
+        int firstNumber = (int) NumberUtils.getCorrectNumber(scanner, items[0]);
+        int secondNumber = (int) NumberUtils.getCorrectNumber(scanner, items[2]);
 
         callRequiredAction(items[1], firstNumber, secondNumber);
 
@@ -39,11 +41,12 @@ public class ThirdTask {
                 System.out.println("Atemus yra: " + calculator.atimtis());
                 break;
             case "/":
-                if(secondNumber == 0){
+                if (secondNumber == 0) {
                     System.out.println("Veiksmas negalimas");
-                }else {
+                } else {
                     System.out.println("Padalinus yra: " + calculator.dalyba());
-                }break;
+                }
+                break;
             case "*":
                 System.out.println("Padalinus yra: " + calculator.daugyba());
                 break;
