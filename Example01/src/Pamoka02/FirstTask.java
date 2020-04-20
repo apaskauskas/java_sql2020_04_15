@@ -13,7 +13,7 @@ public class FirstTask {
 
         int selection = 0;
         while (selection != 5) {
-            System.out.println("1. Staciojo trikampio plotas\n2. Staciakampio plotas\n3. Kvadrato plotas\n4. Apskritimo plotas\n5. Baigti");
+            System.out.println("Pasirinkite ka norite atlikti suvesdami skaiciu: \n 1. Staciojo trikampio plotas\n2. Staciakampio plotas\n3. Kvadrato plotas\n4. Apskritimo plotas\n5. Baigti");
             selection = (int) NumberUtils.getCorrectNumber(scanner);
             switch (selection) {
                 case 1:
