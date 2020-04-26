@@ -1,4 +1,4 @@
-package Pamoka02;
+package Uzdaviniai;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -23,4 +23,7 @@ public class NumberUtils {
             return getCorrectNumber(scanner);
         }
     }
+
 }
+
+

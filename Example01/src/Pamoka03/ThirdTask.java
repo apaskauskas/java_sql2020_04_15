@@ -35,8 +35,11 @@ public class ThirdTask {
         Calculator calculator = new Calculator(firstNumber, secondNumber);
         switch (action) {
             case "+":
+                if (secondNumber == 0) {
+                System.out.println("Veiksmas negalimas");
+            } else {
                 System.out.println("Suma yra: " + calculator.sum());
-                break;
+            }break;
             case "-":
                 System.out.println("Atemus yra: " + calculator.atimtis());
                 break;
