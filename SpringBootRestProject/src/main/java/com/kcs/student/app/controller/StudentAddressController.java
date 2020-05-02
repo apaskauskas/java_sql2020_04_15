@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students/address")
+@RequestMapping("/students/addresses")
 public class StudentAddressController {
 
     @Autowired
@@ -16,17 +16,22 @@ public class StudentAddressController {
 
     @GetMapping
     public List<StudentAddress> getStudentAddress() {
-        return studentAddressService.getStudentAddresses();
+        return studentAddressService.getStudentAddress();
     }
 
     @GetMapping("/{studentId}/student")
     public List<StudentAddress> getStudentAddresses(@PathVariable("studentId") int studentId) {
-        return studentAddressService.getStudentAddresses(studentId);
+        return studentAddressService.getStudentAddress(studentId);
     }
 
     @PostMapping("/{studentId}/student/save")
-    public List<StudentAddress> createStudentAddress(@RequestBody StudentAddress studentAddress, @PathVariable("studentId") int sutdentId) {
-        StudentAddress.setStudentId(sutdentId);
+    public List<StudentAddress> createStudentAddresses(@RequestBody StudentAddress studentAddress, @PathVariable("studentId") int studentId){
+        studentAddress.setStudentId(studentId);
         return studentAddressService.createStudentAddress(studentAddress);
     }
+    @DeleteMapping("/{studentId}/student/{addressId}/delete")
+    public void deleteStudentAddress(@PathVariable ("studentId") int studentId, @PathVariable("addressId") int addressId){
+        studentAddressService.deleteStudentAddress(studentId, addressId);
+    }
 }
+

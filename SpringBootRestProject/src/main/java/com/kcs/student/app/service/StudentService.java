@@ -79,17 +79,17 @@ public class StudentService {
     public Student getStudent(int id) {
         PreparedStatement preparedStatement = studentRepository.getPrepearedStatment("SELECT * FROM students where id = ?");
         if (preparedStatement != null) {
-
         }
+
         try {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return new Student(resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("surname"),
-                        resultSet.getString("email"),
-                        resultSet.getString("phone"));
+                                    resultSet.getString("name"),
+                                    resultSet.getString("surname"),
+                                    resultSet.getString("email"),
+                                    resultSet.getString("phone"));
             }
 
         } catch (SQLException e) {
